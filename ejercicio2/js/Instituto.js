@@ -1,4 +1,6 @@
-class Instituto {
+import Grupo from "./Grupo.js";
+
+export default class Instituto {
     constructor(codInstituto, nombre) {
       this.codInstituto = codInstituto;
       this.nombre = nombre;
@@ -14,22 +16,14 @@ class Instituto {
  numeroTotalAlumnos() {
     var totalAlumnos = 0;
     for (const grupo of this.grupos) {
-      totalAlumnos += grupo.numAlumnos;
+      totalAlumnos += grupo.numAlum;
     }
     return totalAlumnos;
   }
+  mostrarGrupos() {
+    console.log("Grupos en el instituto:");
+    for (const grupo of this.grupos) {
+      console.log("Código de grupo: " + grupo.codGrupo + " Número de alumnos:" +grupo.numAlum);
+    }
+  }
 }
-class Grupo{
-constructor(codGrupo,numAlum){
-    this.codGrupo=codGrupo;
-    this.numAlum=numAlum;
-} 
-
-}
-
-const instituto = new Instituto("1", "Instituto1");
-instituto.agregarGrupo("A", 30);
-instituto.agregarGrupo("B", 25);
-
-console.log("Código del instituto:", instituto.getCodInstituto());
-console.log("Número total de alumnos:", instituto.numeroTotalAlumnos());
